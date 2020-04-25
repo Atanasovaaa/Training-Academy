@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": "5ea3f9266a7be5486007bfaa",
+      "isActive": false,
+      "firstName": "Salazar",
+      "lastName": "Koch",
+      "email": "salazarkoch@farmage.com",
+      "password": "123456",
+      "isAdmin": true
+    },
+    {
+      "id": "5ea3f92618fe28520814b546",
+      "isActive": false,
+      "firstName": "Fowler",
+      "lastName": "Pennington",
+      "email": "fowlerpennington@farmage.com",
+      "password": "123456",
+      "isAdmin": true
+    },
+    {
+      "id": "5ea3f926bfe2b8312538bfc3",
+      "isActive": false,
+      "firstName": "Cote",
+      "lastName": "Finch",
+      "email": "cotefinch@farmage.com",
+      "password": "123456",
+      "isAdmin": false
+    },
+    {
+      "id": "5ea3f926b90220eb708c66c0",
+      "isActive": false,
+      "firstName": "Peggy",
+      "lastName": "Cervantes",
+      "email": "peggycervantes@farmage.com",
+      "password": "123456",
+      "isAdmin": true
+    },
+    {
+      "id": "5ea3f9261ac65264dcd815b4",
+      "isActive": false,
+      "firstName": "Karina",
+      "lastName": "Landry",
+      "email": "karinalandry@farmage.com",
+      "password": "123456",
+      "isAdmin": false
+    }
+  ]
+}
