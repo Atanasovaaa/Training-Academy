@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { UserLoginModel } from '../models/user-login.model';
+import { AuthService } from '../../services/auth.service';
+import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'login-component',
@@ -9,7 +9,7 @@ import { UserLoginModel } from '../models/user-login.model';
 })
 export class LoginComponent {
   constructor(private authService: AuthService) {}
-  user: UserLoginModel = new UserLoginModel();
+  user: UserModel = new UserModel();
 
   handleLoginClick() {
     this.authService.login(this.user);
