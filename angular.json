@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "training-academy"
+    }
+  },
+  "defaultProject": "training-academy",
+  "cli": {
+    "analytics": false
+  }
 }
