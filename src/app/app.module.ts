@@ -13,9 +13,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './components/home/home.component';
+import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, TopNavigationComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

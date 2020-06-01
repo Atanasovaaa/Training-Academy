@@ -1,0 +1,10 @@
+.user-name,
+.route-logout,
+a {
+  color: #ffffff;
+}
+
+a:hover {
+  color: yellowgreen;
+  text-decoration: none;
+}

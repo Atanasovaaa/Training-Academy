@@ -18,6 +18,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     // this.msgs.push({ severity: 'error', detail: 'This is Error!' });
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['home']);
+    }
   }
 
   onRegisterClick() {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UserModel } from '../../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-component',
@@ -8,10 +9,26 @@ import { UserModel } from '../../models/user.model';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   user: UserModel = new UserModel();
 
+  ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['home']);
+    }
+  }
+
   handleLoginClick() {
-    this.authService.login(this.user);
+    this.authService.getUser(this.user).subscribe(
+      (res: any) => {
+        if (res.access_token) {
+          this.authService.setToken(res);
+          this.router.navigate(['home']);
+        }
+      },
+      (error) => {
+        //this.msgs.push({ severity: 'error', detail: 'Can not register!' });
+      }
+    );
   }
 }

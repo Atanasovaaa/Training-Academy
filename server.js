@@ -36,6 +36,12 @@ function isAuthenticated({ email, password }) {
   );
 }
 
+function getUser({ email, password }) {
+  return database.users.find(
+    (user) => user.email === email && user.password === password
+  );
+}
+
 function checkIsAdmin({ email, password }) {
   return database.users.find(
     (user) => user.email === email && user.password === password
@@ -115,8 +121,8 @@ server.post("/auth/login", (req, res) => {
     res.status(status).json({ status, message });
     return;
   }
-  const isAdmin = checkIsAdmin({ email, password });
-  const access_token = createToken({ email, password, isAdmin });
+  const user = getUser({ email, password });
+  const access_token = createToken({ ...user });
   console.log("Access Token:" + access_token);
   res.status(200).json({ access_token });
 });
