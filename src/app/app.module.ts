@@ -15,9 +15,10 @@ import { MessageModule } from 'primeng/message';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
+import { CourseComponent } from './components/course/course.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, TopNavigationComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, TopNavigationComponent, CourseComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
