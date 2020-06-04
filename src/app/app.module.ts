@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { CourseService } from './services/course.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { CoursesComponent } from './components/courses/courses.component';
     MessageModule,
     BrowserAnimationsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, CourseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

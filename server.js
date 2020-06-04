@@ -133,148 +133,24 @@ server.get("/users", (req, res) => {
   res.status(200).json({ users });
 });
 
-server.get("/movies/:id", (req, res) => {
+server.get("/courses/:id", (req, res) => {
   let id = req.params.id;
-  console.log("Get movie by id " + id);
-  const movie = database.movies.find((movie) => movie.movieId === +id);
-  if (!movie || movie === undefined) {
-    const status = 404;
-    const message = "Movie not found";
-    res.status(status).json({ status, message });
-    return;
-  }
-  res.status(200).json({ movie });
+  console.log("Get courses");
+  const courses = database.courses;
+  res.status(200).json({ courses });
 });
 
-server.post("/movies", (req, res) => {
-  const movie = req.body;
-  console.log("create movie");
-  var last_item_id = database.movies.length;
-  movie.movieId = last_item_id + 1;
-  database.movies.push(movie);
-  fs.readFile("./db.json", (err, data) => {
-    if (err) {
-      const status = 401;
-      const message = err;
-      res.status(status).json({ status, message });
-      return;
-    }
-
-    // Get current users data
-    var data = JSON.parse(data.toString());
-
-    //Add new user
-    data.movies.push(movie); //add some data
-    var writeData = fs.writeFile(
-      "./db.json",
-      JSON.stringify(data),
-      (err, result) => {
-        // WRITE
-        if (err) {
-          const status = 401;
-          const message = err;
-          res.status(status).json({ status, message });
-          return;
-        }
-      }
-    );
-  });
-  res.status(200).json(true);
-});
-
-server.put("/movies", (req, res) => {
-  const movie = req.body;
-  console.log("update movie");
-  const movieIndex = database.movies.findIndex(
-    (moviedb) => moviedb.movieId === movie.movieId
-  );
-  if (movieIndex === -1) {
-    const status = 404;
-    const message = "Movie not found";
-    res.status(status).json({ status, message });
-    return;
-  }
-
-  database.movies.splice(movieIndex, 1, movie);
-
-  fs.readFile("./db.json", (err, data) => {
-    if (err) {
-      const status = 401;
-      const message = err;
-      res.status(status).json({ status, message });
-      return;
-    }
-
-    // Get current users data
-    var data = JSON.parse(data.toString());
-
-    //Add new user
-    data.movies.splice(movieIndex, 1, movie); //add some data
-    var writeData = fs.writeFile(
-      "./db.json",
-      JSON.stringify(data),
-      (err, result) => {
-        // WRITE
-        if (err) {
-          const status = 401;
-          const message = err;
-          res.status(status).json({ status, message });
-          return;
-        }
-      }
-    );
-  });
-  res.status(200).json(true);
-});
-
-server.delete("/movies/:id", (req, res) => {
+server.get("/course/:id", (req, res) => {
   let id = req.params.id;
-  console.log("Delete by id ", id);
-  const movieIndex = database.movies.findIndex(
-    (movie) => movie.movieId === +id
-  );
-  if (movieIndex === -1) {
+  console.log("Get course by id " + id);
+  const course = database.courses.find((courseDb) => courseDb.id === +id);
+  if (!course || course === undefined) {
     const status = 404;
-    const message = "Movie not found";
+    const message = "Course not found";
     res.status(status).json({ status, message });
     return;
   }
-  //remove from instance that is in this file
-  database.movies.splice(movieIndex, 1);
-
-  //remove from file
-  fs.readFile("./db/db.json", (err, data) => {
-    if (err) {
-      const status = 401;
-      const message = err;
-      res.status(status).json({ status, message });
-      return;
-    }
-
-    // Get current users data
-    var data = JSON.parse(data.toString());
-
-    data.movies.splice(movieIndex, 1);
-    for (let i = 0; i < data.movies.length; i++) {
-      data.movies[i].movieId = i + 1;
-      database.movies[1].movieId = i + 1;
-    }
-    var writeData = fs.writeFile(
-      "./db.json",
-      JSON.stringify(data),
-      (err, result) => {
-        // WRITE
-        if (err) {
-          const status = 401;
-          const message = err;
-          res.status(status).json({ status, message });
-          return;
-        }
-      }
-    );
-  });
-
-  res.status(200).json(true);
+  res.status(200).json({ course });
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
