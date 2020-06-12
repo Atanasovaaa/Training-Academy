@@ -1,10 +1,6 @@
 <div class="top-navigation">
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="#"
-      ><h3>
-        <strong><i>Training Academy</i></strong>
-      </h3></a
-    >
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Training Academy</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -17,37 +13,26 @@
       class="collapse navbar-collapse justify-content-end"
       id="collapsibleNavbar"
     >
-      <div *ngIf="isAuthenticated" class="user-name">
+      <div *ngIf="isAuthenticated; else noAuthenticated" class="user-name">
         <h4>
           <i style="padding-right: 15px;"
             >Hello, <a href=""> {{ userName }} </a></i
           >
         </h4>
       </div>
-      <!-- <div class="paths">
-        <div *ngFor="let route of route">
-          <a
-            class="route"
-            routerLink="{{ route.path }}"
-            routerLinkActive="active-path"
-            >{{ route.name }}</a
-          >
-        </div>
-        <div *ngIf="isAuthenticated">
-          <a class="route-logout" (click)="logout()">Logout</a>
-        </div>
-      </div> -->
-      <!-- <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul> -->
+      <ng-template #noAuthenticated>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+        </ul>
+      </ng-template>
+      <div *ngIf="isAuthenticated">
+        <a class="route-logout" (click)="logout()">Logout</a>
+      </div>
     </div>
   </nav>
 </div>
